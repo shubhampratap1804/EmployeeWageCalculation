@@ -2,15 +2,21 @@ package employeeBridgelabz.com;
 
 	public class Employee {
 		
-				// Declaring variables
-				
-				static final int wagePerHour=20;
-				static final int maximumWorkingDaysPerMonth =20;
-				static final int  maximumHoursPerMonth=100;
-				
+			String companyName;
+			int numberOfWorkingDays;
+			int workingHoursPerMonth;
+		
+		
+		
+			public Employee(String companyName, int numberOfWorkingDays, int workingHoursPerMonth) {
+			this.companyName = companyName;
+			this.numberOfWorkingDays = numberOfWorkingDays;
+			this.workingHoursPerMonth = workingHoursPerMonth;
+		}		
 				//Method to calculate monthly wage
 				
-				public void computeWage() {
+				public void computeWage(Employee employee) {
+					final int wagePerHour=20;
 					int totalEmpHours=0;
 					int empHours = 0;
 					int totalWorkingDays=0;
@@ -20,7 +26,7 @@ package employeeBridgelabz.com;
 					
 					int attendance = (int) Math.floor(Math.random()*10 % 3);
 					
-					while( totalWorkingDays <= maximumWorkingDaysPerMonth && totalEmpHours < maximumHoursPerMonth) {
+					while( totalWorkingDays <= employee.numberOfWorkingDays && totalEmpHours < employee.workingHoursPerMonth) {
 						switch(attendance) {
 						
 						case 0:
@@ -43,7 +49,7 @@ package employeeBridgelabz.com;
 						totalWorkingDays++;
 					}
 					 int totalMonthlyEmpWage = totalEmpHours * wagePerHour;
-				        System.out.println("Total monthly wage : " + totalMonthlyEmpWage);
+				        System.out.println("Total monthly wage of " + employee.companyName+" is "+ totalMonthlyEmpWage);
 				}
 				
 				// Main method
@@ -52,7 +58,9 @@ package employeeBridgelabz.com;
 					System.out.println("Welcome to employee wage calculation!");
 					//Created a Employee class object and calling the predefined method
 					
-					Employee employee = new Employee();
-					employee.computeWage();
+					Employee reliance = new Employee("Reliance", 20, 100);
+					reliance.computeWage(reliance);
+					Employee bsnl = new Employee("Bsnl", 10, 80);
+					bsnl.computeWage(bsnl);
 				}
 }
